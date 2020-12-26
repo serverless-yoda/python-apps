@@ -17,10 +17,14 @@ data = json.load(open(dictionaryPath))
 
 def wordmeaning(word):   
     if word in data:
-        return data[word]        
+        return data[word]     
+    elif word.title() in data:
+        return data[word.title()]
+    elif word.upper() in data:
+        return data[word.upper()]
     elif len(get_close_matches(word,data.keys())) > 0:
         matches = len(get_close_matches(word,data.keys()))
-        answer = input("There are possinble %s matches. Do you want to return them? Type 'Y' for Yes, 'S' to skip and other letter to exit: " % matches)
+        answer = input("There are possible %s matches. Do you want to return them? Type 'Y' for Yes, 'S' to skip and other letter to exit: " % matches)
         if answer.upper() == 'Y':
             return get_close_matches(word,data.keys())
         elif answer.upper() == 'S':
@@ -31,26 +35,28 @@ def wordmeaning(word):
             else:
                 return "Word not found"
         else:
-            return 'exit'.upper() #exit
+            return 'EXIT' #exit
     else:
         return "Word not found"
 
 flag = ''
-while flag != 'exit'.upper():
+while flag != 'EXIT':
     word = input("Enter word:")
-    if(len(word) >= 3):        
-        meaning = wordmeaning(word.lower())
+    if word != "EXIT":
+        if(len(word) >= 3):        
+            meaning = wordmeaning(word.lower())
 
-        if(type(meaning) == list):
-            for item in meaning:
-                print(item)
-        elif meaning.upper() == 'X': #exit
-            flag = 'X'
+            if(type(meaning) == list):
+                for item in meaning:
+                    print(item)
+            elif meaning.upper() == 'EXIT': #exit
+                flag = 'EXIT'
+            else:
+                print(meaning)
         else:
-            print(meaning)
-
+            print("\nEnter more than two letters")
     else:
-        print("\nEnter more than two letters")
+        flag = "EXIT"
 
 
 
