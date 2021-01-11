@@ -5,7 +5,7 @@
     <ProjectGuid>c7b0d3c0-0b02-468c-86f1-7e64cf7bcea9</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>Dictionary\DictionaryApp.py</StartupFile>
+    <StartupFile>AlgorithmicTrading\FXCMTrading.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -27,6 +27,9 @@
     <Folder Include="PortScanner\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlgorithmicTrading\FXCMTrading.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Dictionary\DictionaryApp.py" />
     <Compile Include="PortScanner\Scanner.py">
       <SubType>Code</SubType>
